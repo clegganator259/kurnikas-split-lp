@@ -1,0 +1,517 @@
+meta:
+  engine: 4.1.0 # Min Ergogen version for KiCad 8 footprints
+units:
+  kx: u
+  ky: U
+  px: u+5
+  py: U+5
+  nnx: 18.5
+  nny: 33
+  casepadding: 1.5
+
+points:
+  zones:
+    matrix:
+      key:
+        padding: 1ky
+        spread: 1kx
+
+      columns:
+        outer:
+          key.column_net: P1
+          key.column_index: 0
+          rows:
+            mod.key.this_led: led_31
+            mod.key.next_led: led_32
+            bottom.key.this_led: led_18
+            bottom.key.next_led: led_19
+            home.key.this_led: led_17
+            home.key.next_led: led_18
+            top.key.this_led: led_6
+            top.key.next_led: led_7
+            num.key.this_led: led_5
+            num.key.next_led: led_6
+        pinky:
+          key.column_net: P0
+          key.column_index: 1
+          rows:
+            mod.key.this_led: led_30
+            mod.key.next_led: led_31
+            bottom.key.this_led: led_19
+            bottom.key.next_led: led_20
+            home.key.this_led: led_16
+            home.key.next_led: led_17
+            top.key.this_led: led_7
+            top.key.next_led: led_8
+            num.key.this_led: led_4
+            num.key.next_led: led_5
+        ring:
+          key.column_net: P3
+          key.column_index: 2
+          rows:
+            mod.key.this_led: led_29
+            mod.key.next_led: led_30
+            bottom.key.this_led: led_20
+            bottom.key.next_led: led_21
+            home.key.this_led: led_15
+            home.key.next_led: led_16
+            top.key.this_led: led_8
+            top.key.next_led: led_9
+            num.key.this_led: led_3
+            num.key.next_led: led_4
+          key.stagger: 7
+        middle:
+          key.column_net: P4
+          key.column_index: 3
+          key.stagger: 2.5
+          rows:
+            mod.key.this_led: led_28
+            mod.key.next_led: led_29
+            bottom.key.this_led: led_21
+            bottom.key.next_led: led_22
+            home.key.this_led: led_14
+            home.key.next_led: led_15
+            top.key.this_led: led_9
+            top.key.next_led: led_10
+            num.key.this_led: led_2
+            num.key.next_led: led_3
+        index:
+          key.column_net: P5
+          key.column_index: 4
+          key.stagger: -2.5
+          rows:
+            mod.key.this_led: led_27
+            mod.key.next_led: led_28
+            bottom.key.this_led: led_22
+            bottom.key.next_led: led_23
+            home.key.this_led: led_13
+            home.key.next_led: led_14
+            top.key.this_led: led_10
+            top.key.next_led: led_11
+            num.key.this_led: led_1
+            num.key.next_led: led_2
+        inner:
+          key:
+            stagger: -2.5
+            column_net: P6
+          rows:
+            bottom.key.this_led: led_23
+            bottom.key.next_led: led_24
+            home.key.this_led: led_12
+            home.key.next_led: led_13
+            top.key.this_led: led_11
+            top.key.next_led: led_12
+            num.key.this_led: P2
+            num.key.next_led: led_1
+            mod:
+              skip: true
+
+      anchor:
+        shift: [100, -150]
+      rows:
+        mod:
+          row_index: 28 
+          row_net: P14
+        bottom:
+          row_net: P16
+          row_index: 21 
+        home:
+          row_net: P10
+          row_index: 14
+        top:
+          row_net: P9
+          row_index: 7
+        num:
+          row_net: P8
+          row_index: 0
+    thumbs:
+      key:
+        padding: 1ky
+        spread: 1kx
+      columns:
+        outer:
+          key:
+            column_net: P6
+            splay: -15
+            column_index: 5
+          rows:
+            top_thumbs.skip: true
+            bottom_thumbs.key.this_led: led_26
+            bottom_thumbs.key.next_led: led_27
+        inner:
+          key.column_index: 6
+          key.column_net: P7
+          rows:
+            top_thumbs.key.this_led: led_24
+            top_thumbs.key.next_led: led_25
+            bottom_thumbs.key.this_led: led_25
+            bottom_thumbs.key.next_led: led_26
+      rows:
+        bottom_thumbs:
+          row_net: P14
+        top_thumbs:
+          row_net: P16
+          shift: [-0.25kx, 0]
+      anchor:
+        ref: matrix_inner_mod
+        shift: [3, -2.5]
+          
+  mirror:
+    ref: matrix_inner_num
+    distance: 100
+
+outlines:
+  keys:
+    - what: rectangle
+      where: true
+      size: [14, 14]
+  left:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: matrix_ring_num
+          shift: [-0.4px,0.5py]
+        - ref: matrix_middle_num
+          shift: [0,0.5py]
+        - ref: matrix_inner_num
+          shift: [1.5nnx+0.5px,0.5py]
+
+        - ref: matrix_inner_bottom
+          shift: [1.5nnx+0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [0.5px, -0.5py]
+        
+        - ref: matrix_index_mod
+          shift: [0, -0.5py]
+        - ref: matrix_ring_mod
+          shift: [0.5px, -0.5py]
+        - ref: matrix_pinky_mod
+          shift: [0.5px, -0.5py]
+        - ref: matrix_outer_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 2
+  xl-left:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_num
+          shift: [-casepadding-0.5px,casepadding+0.5py]
+        - ref: matrix_ring_num
+          shift: [-casepadding-0.4px,casepadding+0.5py]
+        - ref: matrix_middle_num
+          shift: [0,casepadding+0.5py]
+        - ref: matrix_inner_num
+          shift: [casepadding+1.5nnx+0.5px,casepadding+0.5py]
+
+        - ref: matrix_inner_bottom
+          shift: [casepadding+1.5nnx+0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [casepadding+0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        
+        - ref: matrix_index_mod
+          shift: [0, -casepadding-0.5py]
+        - ref: matrix_ring_mod
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        - ref: matrix_pinky_mod
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        - ref: matrix_outer_mod
+          shift: [-casepadding-0.5px, -casepadding-0.5py]
+      fillet: 2
+  right:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_matrix_outer_num
+          shift: [-0.5px,0.5py]
+        - ref: mirror_matrix_ring_num
+          shift: [-0.4px,0.5py]
+        - ref: mirror_matrix_middle_num
+          shift: [0,0.5py]
+        - ref: mirror_matrix_inner_num
+          shift: [1.5nnx+0.5px,0.5py]
+
+        - ref: mirror_matrix_inner_bottom
+          shift: [1.5nnx+0.5px, 0]
+        - ref: mirror_thumbs_inner_bottom_thumbs
+          shift: [0.5px, 0]
+        - ref: mirror_thumbs_inner_bottom_thumbs
+          shift: [0.5px, -0.5py]
+        
+        - ref: mirror_matrix_index_mod
+          shift: [0, -0.5py]
+        - ref: mirror_matrix_ring_mod
+          shift: [0.5px, -0.5py]
+        - ref: mirror_matrix_pinky_mod
+          shift: [0.5px, -0.5py]
+        - ref: mirror_matrix_outer_mod
+          shift: [-0.5px, -0.5py]
+      fillet: 2
+  
+  caseplate:
+    - name: xl-left
+    - operation: subtract
+      name: keys
+      
+  combo-left:
+    - name: left
+    - operation: subtract
+      name: keys
+
+  combo-both:
+    - name: right
+    - name: left
+    - operation: subtract
+      name: keys
+
+pcbs:
+  left:
+    # template: "kicad8"
+    outlines:
+      main:
+        outline: left
+    footprints:
+      choc_hotswap:
+        what: choc
+        where:  /^(?:matrix_|thumbs_).*/
+        params:
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode_main:
+        what: diode
+        where: /^(?:matrix_|thumbs_).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8, -5]
+          rotate: 90
+      rgb_led_left_to_right:
+        what: led_sk6812mini-e
+        where: /^(?:matrix_.*(?:num|home|mod)|thumbs_.*bottom).*/
+        params:
+          P1: "VCC"
+          P2: "{{key.this_led}}"
+          P3: "GND"
+          P4: "{{key.next_led}}"
+        adjust:
+          shift: [0 ,-5]
+      rgb_led_right_to_left:
+        what: led_sk6812mini-e
+        where: /^(?:matrix_.*(?:top|bottom)|thumbs_.*(?:top)).*/
+        params:
+          P1: "VCC"
+          P2: "{{key.this_led}}"
+          P3: "GND"
+          P4: "{{key.next_led}}"
+        adjust:
+          rotate: 180
+          shift: [0 ,-5]
+      nice_nano:
+        what: promicro
+        params:
+          orientation: up
+        where:
+          ref: matrix_inner_num
+          shift: [25, -6]
+          rotate: -90
+      jstph:
+        what: jstph
+        where:
+          ref: matrix_inner_num
+          shift: [25, 0]
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      resetswitch:
+        what: button
+        params: 
+          side: B
+          from: GND
+          to: RST 
+        where:
+          ref: matrix_inner_num
+          shift: [25, 5]
+
+      powerswitch:
+        what: slider
+        where:
+            ref: matrix_inner_num
+            shift: [37.5, 0]
+            rotate: -90
+        params:
+            side: B
+            from: pos
+            to: RAW
+
+      mounting-hole-top-left:
+        what: mountinghole
+        where:
+          ref: matrix_outer_num
+          shift: [0.4px, -0.6py]
+
+      mounting-hole-bottom-left:
+        what: mountinghole
+        where:
+          ref: matrix_outer_bottom
+          shift: [0.4px, -0.6py]
+          
+      mounting-hole-middle:
+        what: mountinghole
+        where:
+          ref: matrix_ring_home
+          shift: [0.4px, -0.5py]
+
+      mounting-hole-top-right:
+        what: mountinghole
+        where:
+          ref: matrix_inner_num
+          shift: [0.4px, -0.5py]
+      mounting-hole-bottom-right:
+        what: mountinghole
+        where:
+          ref: matrix_inner_bottom
+          shift: [0.3px, -0.4py]
+      scrollwheel2:
+        what: scrollwheel
+        where: 
+          ref: matrix_inner_home
+          shift: [px+1, -2]
+        params:
+          from: P7
+          to: P9
+          A: P15
+          B: P18
+          C: GND
+          D: ""
+  right:
+    # template: "kicad8"
+    outlines:
+      main:
+        outline: right
+    footprints:
+      choc_hotswap:
+        what: choc
+        where:  /^mirror_(?:matrix_|thumbs_).*/
+        params:
+          hotswap: false
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+      diode_main:
+        what: diode
+        where: /^mirror_(?:matrix_|thumbs_).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-8, -5]
+          rotate: -90
+      rgb_led_left_to_right:
+        what: led_sk6812mini-e
+        where: /^mirror_(?:matrix_.*(?:num|home|mod)|thumbs_.*bottom).*/
+        params:
+          P1: "VCC"
+          P2: "{{key.this_led}}"
+          P3: "GND"
+          P4: "{{key.next_led}}"
+        adjust:
+          rotate: 180
+          shift: [0 ,-5]
+      rgb_led_right_to_left:
+        what: led_sk6812mini-e
+        where: /^mirror_(?:matrix_.*(?:top|bottom)|thumbs_.*(?:top)).*/
+        params:
+          P1: "VCC"
+          P2: "{{key.this_led}}"
+          P3: "GND"
+          P4: "{{key.next_led}}"
+        adjust:
+          shift: [0 ,-5]
+      nice_nano:
+        what: promicro
+        params:
+          orientation: down
+        where:
+          ref: mirror_matrix_inner_num
+          shift: [25, -6]
+          rotate: 90
+      jstph:
+        what: jstph
+        where:
+          ref: mirror_matrix_inner_num
+          shift: [25, 0]
+        params:
+            side: B
+            pos: pos
+            neg: GND
+      resetswitch:
+        what: button
+        params: 
+          side: B
+          from: GND
+          to: RST 
+        where:
+          ref: mirror_matrix_inner_num
+          shift: [25, 5]
+
+      powerswitch:
+        what: slider
+        where:
+            ref: mirror_matrix_inner_num
+            shift: [37.5, 0]
+            rotate: -90
+        params:
+            side: B
+            from: pos
+            to: RAW
+
+      mounting-hole-top-left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_outer_num
+          shift: [0.4px, -0.6py]
+
+      mounting-hole-bottom-left:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_outer_bottom
+          shift: [0.4px, -0.6py]
+          
+      mounting-hole-middle:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_ring_home
+          shift: [0.4px, -0.5py]
+
+      mounting-hole-top-right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_inner_num
+          shift: [0.4px, -0.5py]
+      mounting-hole-bottom-right:
+        what: mountinghole
+        where:
+          ref: mirror_matrix_inner_bottom
+          shift: [0.3px, -0.4py]
+      scrollwheel2:
+        what: scrollwheel
+        where: 
+          ref: mirror_matrix_inner_home
+          shift: [px+1, -3]
+          rotate: 180
+        params:
+          from: P7
+          to: P10
+          A: P15
+          B: P18
+          C: GND
+          D: ""
+
+
