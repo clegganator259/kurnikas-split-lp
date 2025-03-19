@@ -7,7 +7,8 @@ units:
   py: U+5
   nnx: 18.5
   nny: 33
-  casepadding: 1.5
+  casepadding: 3.5
+  holeradius: 1.1
 
 points:
   zones:
@@ -111,18 +112,18 @@ points:
       rows:
         mod:
           row_index: 28 
-          row_net: P14
+          row_net: P18
         bottom:
-          row_net: P16
+          row_net: P15
           row_index: 21 
         home:
-          row_net: P10
+          row_net: P14
           row_index: 14
         top:
-          row_net: P9
+          row_net: P8
           row_index: 7
         num:
-          row_net: P8
+          row_net: P7
           row_index: 0
     thumbs:
       key:
@@ -140,7 +141,7 @@ points:
             bottom_thumbs.key.next_led: led_27
         inner:
           key.column_index: 6
-          key.column_net: P7
+          key.column_net: P9
           rows:
             top_thumbs.key.this_led: led_24
             top_thumbs.key.next_led: led_25
@@ -148,19 +149,25 @@ points:
             bottom_thumbs.key.next_led: led_26
       rows:
         bottom_thumbs:
-          row_net: P14
+          row_net: P18
         top_thumbs:
-          row_net: P16
+          row_net: P15
           shift: [-0.25kx, 0]
       anchor:
         ref: matrix_inner_mod
         shift: [3, -2.5]
+
           
 outlines:
   keys:
     - what: rectangle
       where: true
       size: [14, 14]
+    - what: rectangle
+      size: [14, 14]
+      where:
+        ref: matrix_inner_home
+        shift: [px+1, -7]
   left:
     - what: polygon
       operation: stack
@@ -257,11 +264,61 @@ outlines:
         - ref: matrix_outer_mod
           shift: [-casepadding-0.5px, -casepadding-0.5py]
       fillet: 2
+
+  holes:
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_outer_num
+        shift: [0.4px, -0.6py]
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_outer_bottom
+        shift: [0.4px, -0.6py]
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_ring_home
+        shift: [0.4px, -0.5py]
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_inner_num
+        shift: [0.4px, 0]
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_inner_bottom
+        shift: [0.3px, -0.45py]
+    - what: circle
+      radius: holeradius
+      where:
+        ref: matrix_inner_num
+        shift: [25, -26]
+  marks:
+    - what: rectangle
+      size: [5, 10]
+      where:
+        ref: matrix_inner_num
+        shift: [25, 18]
+        rotate: -90
+    - what: rectangle
+      size: [5, 6.5]
+      where:
+        ref: matrix_inner_num
+        shift: [45, 0]
+    
   
   caseplate:
     - name: xl-left
     - operation: subtract
       name: keys
+    - operation: subtract
+      name: marks
+    - operation: subtract
+      name: holes
+
       
   combo-left:
     - name: left
@@ -357,13 +414,20 @@ pcbs:
         where:
           ref: matrix_inner_num
           shift: [25, -26]
-      resetswitch-via:
+      resetswitch-via-1:
         what: via
         where:
           ref: matrix_inner_num
-          shift: [38, -28]
+          shift: [25, -28]
         params:
           net: RST
+      resetswitch-via-2:
+        what: via
+        where:
+          ref: matrix_inner_num
+          shift: [25, -24]
+        params:
+          net: GND
       powerswitch-front:
         what: slider_3_way
         where:
@@ -429,11 +493,11 @@ pcbs:
           ref: matrix_inner_home
           shift: [px+1, -7]
         params:
-          from: P7
+          from: P9
           to: RB_ROW
           A: scroll-j1
           B: scroll-j2
-          C: P18
+          C: GND
       scrollwheel-jumper-front-1:
         what: jumper
         where: 
@@ -442,7 +506,7 @@ pcbs:
           rotate: 180
         params:
           to: scroll-j1
-          from: P15
+          from: P16
           side: F
       scrollwheel-jumper-front-2:
         what: jumper
@@ -452,7 +516,7 @@ pcbs:
           rotate: 180
         params:
           to: scroll-j2
-          from: GND
+          from: P10
           side: F
       scrollwheel-jumper-back-1:
         what: jumper
@@ -462,7 +526,7 @@ pcbs:
           rotate: 180
         params:
           to: scroll-j1
-          from: GND
+          from: P10
           side: B 
       scrollwheel-jumper-back-2:
         what: jumper
@@ -472,20 +536,32 @@ pcbs:
           rotate: 180
         params:
           to: scroll-j2
-          from: P15
+          from: P16
           side: B
-      rotary-encoder-via:
+      rotary-encoder-via-1:
         what: via
         where:
           ref: matrix_inner_home
-          shift: [px-2, -4.5]
+          shift: [px-2.4, -4.5]
         params:
-          net: P15
+          net: P10
+      rotary-encoder-via-2:
+        what: via
+        where:
+          ref: matrix_inner_home
+          shift: [px-2.4, -9.5]
+        params:
+          net: P16
       diode_rotary_encoder:
         what: diode
         where: 
           ref: matrix_inner_home
           shift: [px+1, -16]
+          rotate: 180
         params:
           from: RB_ROW
-          to: P10
+          to: P14
+cases:
+  faceplate:
+    - name: caseplate
+      extrude: 1.5
