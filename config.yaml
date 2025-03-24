@@ -168,6 +168,14 @@ outlines:
       where:
         ref: matrix_inner_home
         shift: [px+1, -7]
+  nn-cutout:
+    - what: rectangle
+      size: [18, 41]
+      where:
+        ref: matrix_inner_num
+        shift: [25, -2]
+
+    
   left:
     - what: polygon
       operation: stack
@@ -264,6 +272,45 @@ outlines:
         - ref: matrix_outer_mod
           shift: [-casepadding-0.5px, -casepadding-0.5py]
       fillet: 2
+  xl-left-nn-cutout:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_outer_num
+          shift: [-casepadding-0.5px,casepadding+0.5py]
+        - ref: matrix_ring_num
+          shift: [-casepadding-0.4px,casepadding+0.5py]
+        - ref: matrix_middle_num
+          shift: [0,casepadding+0.5py]
+
+
+        - ref: matrix_inner_num
+          shift: [25-0.5nnx,casepadding+0.5py]
+
+        - ref: matrix_inner_num
+          shift: [25-0.5nnx, -6-0.5nny]
+          rotate: -90
+
+
+        - ref: matrix_inner_num
+          shift: [casepadding+1.5nnx+0.5px,-6-0.5nny]
+
+        - ref: matrix_inner_bottom
+          shift: [casepadding+1.5nnx+0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [casepadding+0.5px, 0]
+        - ref: thumbs_inner_bottom_thumbs
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        
+        - ref: matrix_index_mod
+          shift: [0, -casepadding-0.5py]
+        - ref: matrix_ring_mod
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        - ref: matrix_pinky_mod
+          shift: [casepadding+0.5px, -casepadding-0.5py]
+        - ref: matrix_outer_mod
+          shift: [-casepadding-0.5px, -casepadding-0.5py]
+      fillet: 2
 
   holes:
     - what: circle
@@ -308,6 +355,45 @@ outlines:
       where:
         ref: matrix_inner_num
         shift: [45, 0]
+
+  sandwhich-baseplate:
+    - name: xl-left
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_outer_num
+        shift: [0.4px, -0.6py]
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_outer_bottom
+        shift: [0.4px, -0.6py]
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_ring_home
+        shift: [0.4px, -0.5py]
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_inner_num
+        shift: [0.4px, 0]
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_inner_bottom
+        shift: [0.3px, -0.45py]
+    - what: circle
+      operation: subtract
+      radius: 1.6
+      where:
+        ref: matrix_inner_num
+        shift: [25, -26]
     
   
   caseplate:
@@ -319,9 +405,17 @@ outlines:
     - operation: subtract
       name: holes
 
+
       
   combo-left:
     - name: left
+    - operation: subtract
+      name: keys
+
+  sandwich-faceplate:
+    - name: xl-left-nn-cutout
+    - operation: subtract
+      name: holes
     - operation: subtract
       name: keys
 
