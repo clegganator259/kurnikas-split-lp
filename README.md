@@ -23,19 +23,19 @@ My attempt at designing my perfect split ergo keyboard
 |------------------|--------:|
 |8mm m2 standoffs  |       10|
 |m2 flat top screws|       10|
-|[Left hand faceplate](kurnikas-split-lp/production/full-case-3dprint/face-plate-left.stl)| 1|
-|[Right hand faceplate](kurnikas-split-lp/production/full-case-3dprint/face-plate-right.stl)| 1|
-|[Left hand Backplate](kurnikas-split-lp/production/full-case-3dprint/base-plate-right.stl)| 1|
-|[Right hand Backplate](kurnikas-split-lp/production/full-case-3dprint/base-plate-left.stl)| 1|
+|[Left hand faceplate](production/full-case-3dprint/face-plate-left.stl)| 1|
+|[Right hand faceplate](production/full-case-3dprint/face-plate-right.stl)| 1|
+|[Left hand Backplate](production/full-case-3dprint/base-plate-right.stl)| 1|
+|[Right hand Backplate](production/full-case-3dprint/base-plate-left.stl)| 1|
 
 ### Sandwich Case
 |Component                             | Quantity|
 |--------------------------------------|--------:|
 |m2x4mm chicago screws with max 3mm OD |       10|
-|Faceplate ([laser cut](kurnikas-split-lp/production/sandwich-case-laser-cut/faceplate.dxf)/[3d printed](kurnikas-split-lp/production/sandwich-case-3dprint/faceplate.stl)) |2|
-|Baseplate ([laser cut](kurnikas-split-lp/production/sandwich-case-laser-cut/baseplate.dxf)/[3d printed](kurnikas-split-lp/production/sandwich-case-3dprint/baseplate.stl)) |2|
+|Faceplate ([laser cut](production/sandwich-case-laser-cut/faceplate.dxf)/[3d printed](production/sandwich-case-3dprint/faceplate.stl)) |2|
+|Baseplate ([laser cut](production/sandwich-case-laser-cut/baseplate.dxf)/[3d printed](production/sandwich-case-3dprint/baseplate.stl)) |2|
 
 
 ## Making your own
 
-For a more detailed tutorial please go to [the build tutorial](kurnikas-split-lp/docs/tutorial.md)
+For a more detailed tutorial please go to [the build tutorial](docs/tutorial.md)
