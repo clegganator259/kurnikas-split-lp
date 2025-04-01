@@ -1,6 +1,12 @@
 # kurnikas-split-lp
 My attempt at designing my perfect split ergo keyboard
 
+# Attribution
+
+For the battery connector and led footprints @celolides fantastic [footprint library](https://github.com/ceoloide/ergogen-footprints)
+For the choc v1 reversible footprints @ergogen + @infused-kim, @ceoloide, @grazfather, @nxtk improvements
+
+For the videos that helped make this possible [Christian Sellig's wonderful video](https://www.youtube.com/watch?v=7UXsD7nSfDY)
 # BOM
 ## PCB Components
 |Component                            |                    Quantity|
